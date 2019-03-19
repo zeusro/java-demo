@@ -3,7 +3,7 @@ pipeline {
     label "jenkins-gradle"
   }
   environment {
-    ORG = 'zeusro'
+    ORG = 'amiba'
     APP_NAME = 'java-demo'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
   }
