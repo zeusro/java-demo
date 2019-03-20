@@ -50,24 +50,24 @@ pipeline {
         }
       }
     }
-    stage('Promote to Environments') {
-      when {
-        branch 'master'
-      }
-      steps {
-        container('gradle') {
-          dir('./charts/java-demo') {
-            sh "jx step changelog --version v\$(cat ../../VERSION)"
+    // stage('Promote to Environments') {
+    //   when {
+    //     branch 'master'
+    //   }
+    //   steps {
+    //     container('gradle') {
+    //       dir('./charts/java-demo') {
+    //         sh "jx step changelog --version v\$(cat ../../VERSION)"
 
-            // release the helm chart
-            sh "jx step helm release"
+    //         // release the helm chart
+    //         sh "jx step helm release"
 
-            // promote through all 'Auto' promotion Environments
-            sh "jx promote -b --all-auto --timeout 1h --version \$(cat ../../VERSION)"
-          }
-        }
-      }
-    }
+    //         // promote through all 'Auto' promotion Environments
+    //         sh "jx promote -b --all-auto --timeout 1h --version \$(cat ../../VERSION)"
+    //       }
+    //     }
+    //   }
+    // }
   }
   post {
         always {
