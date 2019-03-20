@@ -7,7 +7,7 @@ build:
     docker: {}
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/zeusro/java-demo:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/17zwd/java-demo:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
