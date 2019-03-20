@@ -7,7 +7,7 @@ build:
     docker: {}
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/17zwd/java-demo:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/17zwd/java-spring-boot-template:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
@@ -18,7 +18,7 @@ profiles:
     - docker: {}
     tagPolicy:
       envTemplate:
-        template: '{{.DOCKER_REGISTRY}}/zeusro/java-demo:{{.DIGEST_HEX}}'
+        template: '{{.DOCKER_REGISTRY}}/zeusro/java-spring-boot-template:{{.DIGEST_HEX}}'
     local: {}
   deploy:
     helm:
@@ -26,5 +26,5 @@ profiles:
       - name: java-demo
         chartPath: charts/java-demo
         setValueTemplates:
-          image.repository: '{{.DOCKER_REGISTRY}}/zeusro/java-demo'
+          image.repository: '{{.DOCKER_REGISTRY}}/zeusro/java-spring-boot-template'
           image.tag: '{{.DIGEST_HEX}}'
